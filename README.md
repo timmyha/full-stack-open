@@ -1,6 +1,6 @@
 # [Full Stack Open 2021](https://fullstackopen.com/en/)
-![FullStackOpen logo](https://courses.helsinki.fi/sites/default/files/styles/large_with_manualcrop/public/course-header-images/fullstack.png?itok=2F9e0aYL)
+![FullStackOpen logo](https://i.imgur.com/JEJSKGa.png)
 
-This course serves as an introduction to modern web application development with JavaScript-- building single page applications with ReactJS that use REST APIs built with Node.js.
+Full Stack Open is an online collegiate-level course provided by the University of Helsinki. FSO serves as a deep-dive into modern web application development with JavaScript-- building single page applications with React, Redux, Node.js, MongoDB, GraphQL and TypeScript.
 
 ### [Part 0 - Fundamentals of Web apps](./part-0)
