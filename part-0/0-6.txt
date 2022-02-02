@@ -1,0 +1,10 @@
+title new note, single page application
+
+browser->server: HTTP POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+
+note over server:
+The HTTP POST request posts the new note
+as JSON data
+end note
+
+server-->browser: HTTP 201 {"message":"note created"}
