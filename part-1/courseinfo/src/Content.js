@@ -1,19 +1,29 @@
 const Parts = (props) => {
-  return (
-    <div> 
-    <p>{props.parts[0][0]}: {props.parts[0][1]}</p>
-    <p>{props.parts[1][0]}: {props.parts[1][1]}</p>
-    <p>{props.parts[2][0]}: {props.parts[2][1]}</p>
-
-    </div>
-  )
+    return (
+        <div>
+            <table>
+                <tr>
+                    <td width="200px">{props.parts[0].name}</td> 
+                    <td>{props.parts[0].exercises}</td>
+                </tr>
+                <tr>
+                    <td>{props.parts[1].name}</td> 
+                    <td>{props.parts[1].exercises}</td>
+                </tr>
+                <tr>
+                    <td>{props.parts[2].name}</td> 
+                    <td>{props.parts[2].exercises}</td>
+                </tr>
+            </table>
+        </div>
+    )
 }
 
 const Content = (props) => {
 
-  return (
-    <Parts parts={props.parts} />
-  )
+    return (
+        <Parts parts={props.parts} />
+    )
 }
 
 export default Content;

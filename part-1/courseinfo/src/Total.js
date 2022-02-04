@@ -1,7 +1,16 @@
  const Total = (props) => {
      return (
        <div>
-        <p>Number of exercises: {props.coursetotal}</p>
+         <table>
+           <tr>
+             <td width="200px">
+        <b>Number of exercises:</b>
+              </td>
+              <td>
+              <b>{props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</b>
+              </td>
+          </tr>
+        </table>
        </div>
      )
    }
