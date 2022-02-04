@@ -1,19 +1,21 @@
 const Parts = (props) => {
     return (
-        <div>
+        <div class="col-2 bg-warning">
             <table>
-                <tr>
-                    <td width="200px">{props.parts[0].name}</td> 
-                    <td>{props.parts[0].exercises}</td>
-                </tr>
-                <tr>
-                    <td>{props.parts[1].name}</td> 
-                    <td>{props.parts[1].exercises}</td>
-                </tr>
-                <tr>
-                    <td>{props.parts[2].name}</td> 
-                    <td>{props.parts[2].exercises}</td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td width="200px">{props.course.parts[0].name}</td>
+                        <td>{props.course.parts[0].exercises}</td>
+                    </tr>
+                    <tr>
+                        <td>{props.course.parts[1].name}</td>
+                        <td>{props.course.parts[1].exercises}</td>
+                    </tr>
+                    <tr>
+                        <td>{props.course.parts[2].name}</td>
+                        <td>{props.course.parts[2].exercises}</td>
+                    </tr>
+                </tbody>
             </table>
         </div>
     )
@@ -22,7 +24,7 @@ const Parts = (props) => {
 const Content = (props) => {
 
     return (
-        <Parts parts={props.parts} />
+        <Parts course={props.course} />
     )
 }
 

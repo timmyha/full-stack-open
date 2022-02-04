@@ -1,9 +1,20 @@
-const Header = (props) => {
-    return (
-      <div>
-      <h1>{props.course}</h1>
-      </div>
-    )
-  }
+import { tab } from "@testing-library/user-event/dist/tab";
 
-  export default Header;
+const Header = (props) => {
+  return (
+
+    <div class="col-2 bg-primary">
+      <table>
+        <thead>
+          <tr>
+            <td>
+              <p><b>{props.course.name}</b></p>
+            </td>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  )
+}
+
+export default Header;

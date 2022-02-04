@@ -1,18 +1,20 @@
- const Total = (props) => {
-     return (
-       <div>
-         <table>
-           <tr>
-             <td width="200px">
-        <b>Number of exercises:</b>
-              </td>
-              <td>
-              <b>{props.parts[0].exercises + props.parts[1].exercises + props.parts[2].exercises}</b>
-              </td>
+const Total = (props) => {
+  return (
+    <div class="col-2 bg-danger">
+      <table>
+        <tfoot>
+          <tr>
+            <td width="200px">
+              <b>Number of exercises:</b>
+            </td>
+            <td>
+              <b>{props.course.parts[0].exercises + props.course.parts[1].exercises + props.course.parts[2].exercises}</b>
+            </td>
           </tr>
-        </table>
-       </div>
-     )
-   }
+        </tfoot>
+      </table>
+    </div>
+  )
+}
 
-   export default Total;
+export default Total;
