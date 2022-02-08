@@ -1,6 +1,6 @@
 const Total = (props) => {
   return (
-    <div class="col-2 bg-danger">
+    <div className={"col-2 bg-danger"}>
       <table>
         <tfoot>
           <tr>

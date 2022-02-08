@@ -1,6 +1,6 @@
 const Parts = (props) => {
     return (
-        <div class="col-2 bg-warning">
+        <div className={"col-2 bg-warning"}>
             <table>
                 <tbody>
                     <tr>
@@ -22,10 +22,11 @@ const Parts = (props) => {
 }
 
 const Content = (props) => {
-
+console.log(props);
     return (
         <Parts course={props.course} />
     )
 }
+
 
 export default Content;

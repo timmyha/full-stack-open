@@ -1,7 +1,7 @@
 const Header = (props) => {
   return (
 
-    <div class="col-2 bg-primary">
+    <div className={"col-2 bg-primary"}>
       <table>
         <thead>
           <tr>
