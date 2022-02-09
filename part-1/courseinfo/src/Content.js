@@ -22,7 +22,7 @@ const Parts = (props) => {
 }
 
 const Content = (props) => {
-console.log(props);
+    console.log(props);
     return (
         <Parts course={props.course} />
     )
