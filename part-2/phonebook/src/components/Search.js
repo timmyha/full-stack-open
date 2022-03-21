@@ -12,7 +12,7 @@ return (
         />
     </>
 
-)
+    )
 }
 
 export default Search

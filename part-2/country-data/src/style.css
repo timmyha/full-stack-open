@@ -1,0 +1,18 @@
+
+body {
+    width: 100vw;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 90vw;
+    margin: auto;
+}
+
+.show-button {
+    background-color: pink;
+    border: 0px;
+    margin-left: 10px;
+}
