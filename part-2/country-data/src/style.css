@@ -16,3 +16,7 @@ body {
     border: 0px;
     margin-left: 10px;
 }
+
+.search-bar {
+    max-width: 350px;
+}

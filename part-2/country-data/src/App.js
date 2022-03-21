@@ -13,10 +13,9 @@ function App() {
       .get('https://restcountries.com/v2/all')
       .then(response => {
         setData(response.data)
-      })
-
+        })
     }, [])
-    console.log(data)
+    
     const handleFilter = (event) => {
         setFilter(event.target.value)
     }
@@ -32,6 +31,7 @@ function App() {
             </button>
         </p>))
 
+
   	return (
 
     	<div className="App">
@@ -39,6 +39,7 @@ function App() {
       		<h1>Country Data</h1>
 
             <input
+                className="search-bar"
                 onChange={handleFilter}
             />
 
