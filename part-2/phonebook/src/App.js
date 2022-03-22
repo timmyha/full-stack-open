@@ -2,34 +2,45 @@ import { useState, useEffect } from 'react'
 import Entry from './components/Entry'
 import Search from './components/Search'
 import AddContact from './components/AddContact'
-import axios from 'axios'
+import './style.css'
+import noteService from './services/notes'
 
 const App = () => {
   	const [persons, setPersons] = useState([]) ;
- 	const [newName, setNewName] = useState('');
-  	const [newNumber, setNewNumber] = useState('');
+ 	const [newName, setNewName] = useState('name');
+  	const [newNumber, setNewNumber] = useState('number');
   	const [filter, setFilter] = useState('');
+    const [darkMode, setDarkMode] = useState(false)
 
-  useEffect(() => {
-    axios
-      	.get('http://localhost:3001/persons')
-      	.then(response => {
-      	setPersons(response.data)
-    	})
+    useEffect(() => {
+        noteService
+            .getAll()
+            .then(phonebook => {
+            setPersons(phonebook)
+    })
+            .catch(e => console.log(e));
   	}, [])
 
-  let formSubmit = (event) => {
-    event.preventDefault()
+    let formSubmit = (event) => {
+        event.preventDefault()
+    const newEntry = 
+        {"name": newName,
+        "number": newNumber}
+
     persons.find(i => i.name === newName) ? 
-      alert(`${newName} already exists.`) :
+     console.log('already entered, edit their number instead') :
       setPersons([
           	...persons,
-          	{"name": newName,
-          	"number": newNumber}
-    	])
+          	newEntry
+    	],
+        noteService
+        .create(newEntry)
+        .then(
+            setNewName('name'),
+            setNewNumber('number')))
   	}
 
-  let handleNameChange = (event) => {
+    let handleNameChange = (event) => {
     	setNewName(event.target.value)
   	}
 
@@ -46,15 +57,21 @@ const App = () => {
                                 .includes(filter)) : persons
 
   	const displayAll = filteredPersons.map((person) => {
-   		return <Entry key={person.name}
-                  name={person.name}
-                  number={person.number}
+   		return  <Entry key={person.name}
+                    name={person.name}
+                    number={person.number}
+                    setPersons={setPersons}
+                    id={person.id}
+                    persons={persons}
+                    person={person}
+                    setNewNumber={setNewNumber}
+                    setNewName={setNewName}
                 />
                 })
 
 	return (
-    	<div>
-      		<h2>Phonebook</h2>
+    	<div className={darkMode ? "phonebook-dark" : "phonebook"}>
+      		<h1>Phonebook</h1> <button onClick={() => setDarkMode(!darkMode)}>🌚🌝</button>
 
       		<Search 
           		value={filter}

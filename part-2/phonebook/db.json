@@ -1,24 +1,64 @@
 {
-    "persons":[
-      { 
-        "name": "Arto Hellas", 
-        "number": "040-123456",
-        "id": 1
-      },
-      { 
-        "name": "Ada Lovelace", 
-        "number": "39-44-5323523",
-        "id": 2
-      },
-      { 
-        "name": "Dan Abramov", 
-        "number": "12-43-234345",
-        "id": 3
-      },
-      { 
-        "name": "Mary Poppendieck", 
-        "number": "39-23-6423122",
-        "id": 4
-      }
-    ]
-  }
+  "persons": [
+    {
+      "name": "kinda cutie",
+      "number": "23489234",
+      "id": 12
+    },
+    {
+      "name": "bubba",
+      "number": "234235",
+      "id": 13
+    },
+    {
+      "name": "craigslist chump",
+      "number": "34534562",
+      "id": 14
+    },
+    {
+      "name": "cigarette guy",
+      "number": "234267783",
+      "id": 15
+    },
+    {
+      "name": "diane",
+      "number": "3985803467",
+      "id": 17
+    },
+    {
+      "name": "\"phone\" bill",
+      "number": "34534626",
+      "id": 18
+    },
+    {
+      "name": "mom",
+      "number": "888888",
+      "id": 20
+    },
+    {
+      "name": "guy i met",
+      "number": "298349234",
+      "id": 22
+    },
+    {
+      "name": "Francine",
+      "number": "777777",
+      "id": 23
+    },
+    {
+      "name": "papa",
+      "number": "44444444",
+      "id": 24
+    },
+    {
+      "name": "norbert",
+      "number": "84884389",
+      "id": 25
+    },
+    {
+      "name": "chump",
+      "number": "4444444",
+      "id": 26
+    }
+  ]
+}

@@ -6,19 +6,19 @@ return  (
         <form onSubmit={props.formSubmit}>
         
         <div>
-            name:   <input 
-                        type="text"
-                        value={props.newName}
-                        onChange={props.handleNameChange}
-                    />
+                <input 
+                    type="text"
+                    value={props.newName}
+                    onChange={props.handleNameChange}
+                />
         </div>
   
         <div>
-            #:  <input 
-                    type="text"
-                    value={props.newNumber}
-                    onChange={props.handleNumberChange}
-                />
+            <input 
+                type="text"
+                value={props.newNumber}
+                onChange={props.handleNumberChange}
+            />
         </div>
 
         <div>

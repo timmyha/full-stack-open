@@ -5,7 +5,8 @@ return (
     <>
         <h3>Search:</h3>
 
-        <input 
+        <input
+            className="search" 
             type="text"
             value={props.value}
             onChange={props.onChange}
