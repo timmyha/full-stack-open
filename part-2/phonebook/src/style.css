@@ -137,3 +137,8 @@
     color: white;
     cursor: pointer;
 }
+
+.numbers {
+    margin-top: 50px;
+    text-decoration: underline;
+}

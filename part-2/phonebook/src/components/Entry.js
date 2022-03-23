@@ -29,7 +29,7 @@ const Entry = ( props ) => {
         .catch(error => {
             console.log('fail')
             })
-      }
+        }
 
     return (
         <div>

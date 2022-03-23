@@ -26,16 +26,6 @@
       "id": 17
     },
     {
-      "name": "\"phone\" bill",
-      "number": "34534626",
-      "id": 18
-    },
-    {
-      "name": "mom",
-      "number": "888888",
-      "id": 20
-    },
-    {
       "name": "guy i met",
       "number": "298349234",
       "id": 22
@@ -56,11 +46,6 @@
       "id": 25
     },
     {
-      "name": "chump",
-      "number": "4444444",
-      "id": 26
-    },
-    {
       "name": "emergency",
       "number": "333333",
       "id": 27
@@ -71,9 +56,14 @@
       "id": 28
     },
     {
-      "name": "guy",
+      "name": "buddy",
       "number": "234234",
       "id": 29
+    },
+    {
+      "name": "hottie from linkedin",
+      "number": "3453466",
+      "id": 30
     }
   ]
 }

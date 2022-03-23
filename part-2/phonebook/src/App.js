@@ -4,6 +4,7 @@ import Search from './components/Search'
 import AddContact from './components/AddContact'
 import './style.css'
 import noteService from './services/notes'
+import toast, { Toaster } from 'react-hot-toast';
 
 const App = () => {
   	const [persons, setPersons] = useState([]) ;
@@ -19,7 +20,7 @@ const App = () => {
             setPersons(phonebook)
     })
             .catch(e => console.log(e));
-  	}, [newName])
+  	}, [newNumber])
 
     let formSubmit = (event) => {
         event.preventDefault()
@@ -28,7 +29,8 @@ const App = () => {
         "number": newNumber}
 
     persons.find(i => i.name === newName) ? 
-     console.log('already entered, edit their number instead') :
+     toast.error(`${newName} already added ): try editing their number instead.`,
+        {duration: 5000}) :
       setPersons([
           	...persons,
           	newEntry
@@ -36,8 +38,9 @@ const App = () => {
         noteService
         .create(newEntry)
         .then(
+            toast.success(`${newName} successfully added to phonebook`),
             setNewName('name'),
-            setNewNumber('number')
+            setNewNumber('number'),
             ))
   	}
 
@@ -72,6 +75,7 @@ const App = () => {
 
 	return (
     	<div className={darkMode ? "phonebook-dark" : "phonebook"}>
+            <Toaster />
       		<h1>Phonebook</h1> <button onClick={() => setDarkMode(!darkMode)}>🌚🌝</button>
 
       		<Search 
@@ -87,7 +91,7 @@ const App = () => {
           		newNumber={newNumber}
       		/>
 
-      		<h2>Numbers</h2>
+      		<h2 className="numbers">Numbers</h2>
       			{displayAll}
       	</div>
   	)
