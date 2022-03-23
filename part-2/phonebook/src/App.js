@@ -7,10 +7,10 @@ import noteService from './services/notes'
 
 const App = () => {
   	const [persons, setPersons] = useState([]) ;
- 	const [newName, setNewName] = useState('name');
-  	const [newNumber, setNewNumber] = useState('number');
+ 	const [newName, setNewName] = useState('name:');
+  	const [newNumber, setNewNumber] = useState('number:');
   	const [filter, setFilter] = useState('');
-    const [darkMode, setDarkMode] = useState(false)
+    const [darkMode, setDarkMode] = useState(false);
 
     useEffect(() => {
         noteService
@@ -19,7 +19,7 @@ const App = () => {
             setPersons(phonebook)
     })
             .catch(e => console.log(e));
-  	}, [])
+  	}, [newName])
 
     let formSubmit = (event) => {
         event.preventDefault()
@@ -37,7 +37,8 @@ const App = () => {
         .create(newEntry)
         .then(
             setNewName('name'),
-            setNewNumber('number')))
+            setNewNumber('number')
+            ))
   	}
 
     let handleNameChange = (event) => {
