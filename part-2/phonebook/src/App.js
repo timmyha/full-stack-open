@@ -1,100 +1,99 @@
 import { useState, useEffect } from 'react'
-import Entry from './components/Entry'
-import Search from './components/Search'
-import AddContact from './components/AddContact'
-import './style.css'
-import noteService from './services/notes'
 import toast, { Toaster } from 'react-hot-toast';
+import Filter from './components/Filter';
+import Form from './components/Form';
+import Persons from './components/Persons';
+import axios from 'axios'
+import phonebook from './src/phonebook'
 
 const App = () => {
-  	const [persons, setPersons] = useState([]) ;
- 	const [newName, setNewName] = useState('name:');
-  	const [newNumber, setNewNumber] = useState('number:');
-  	const [filter, setFilter] = useState('');
-    const [darkMode, setDarkMode] = useState(false);
+  const [filter, setFilter] = useState('')
+  const [persons, setPersons] = useState([])
+  const [formData, setFormData] = useState({ name: '', number: '' })
 
-    useEffect(() => {
-        noteService
-            .getAll()
-            .then(phonebook => {
-            setPersons(phonebook)
-    })
-            .catch(e => console.log(e));
-  	}, [newNumber])
+  const initialForm = { name: '', number: '' }
 
-    let formSubmit = (event) => {
-        event.preventDefault()
-    const newEntry = 
-        {"name": newName,
-        "number": newNumber}
+  useEffect(() => {
+    phonebook
+      .getAll()
+      .then(res => setPersons(res.data))
+  }, [])
 
-    persons.find(i => i.name === newName) ? 
-     toast.error(`${newName} already added ): try editing their number instead.`,
-        {duration: 5000}) :
-      setPersons([
-          	...persons,
-          	newEntry
-    	],
-        noteService
-        .create(newEntry)
-        .then(
-            toast.success(`${newName} successfully added to phonebook`),
-            setNewName('name'),
-            setNewNumber('number'),
-            ))
-  	}
+  const { name, number } = formData
 
-    let handleNameChange = (event) => {
-    	setNewName(event.target.value)
-  	}
+  const handleFormChange = (e) => {
+    const { id, value } = e.target
 
-  	let handleNumberChange = (event) => {
-    	setNewNumber(event.target.value)
-  	}
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }))
+  }
 
-  	let handleFilterChange = (event) => {
-    	setFilter(event.target.value)
-  	}
+  const handleFormSubmit = (e) => {
+    e.preventDefault()
+    if (persons.find(person => person.name === name)) {
+      if (window.confirm(`${name} already in phonebook, update the number?`)) {
+        const existingPerson = persons.filter(person => person.name === name)[0]
+        phonebook
+          .update(existingPerson.id, formData)
+          .then(res => {
+            phonebook
+              .getAll()
+              .then(res => {
+                setPersons(res.data)
+                toast.success('${name} successfully updated!')
+                setFormData(initialForm)
+              })
+          }).catch(err => toast.error(`${name} no longer exists on server`))
+      } else {
+        setFormData(initialForm)
+      }
+      setFormData(initialForm)
+    } else {
+      phonebook
+        .create(formData)
+        .then(res => {
+          setPersons(prev => [...prev, res.data])
+          toast.success(`${name} added to phonebook`)
+          setFormData(initialForm)
+        })
+    }
+  }
 
-  	const filteredPersons = filter ?
-    	persons.filter(person => person.name.toLowerCase()
-                                .includes(filter)) : persons
+  const handleDeleteNote = (id) => {
+    phonebook
+      .remove(id)
+      .then(res => {
+        phonebook
+          .getAll()
+          .then(res => setPersons(res.data))
+      })
+  }
 
-  	const displayAll = filteredPersons.map((person) => {
-   		return  <Entry key={person.name}
-                    name={person.name}
-                    number={person.number}
-                    setPersons={setPersons}
-                    id={person.id}
-                    persons={persons}
-                    person={person}
-                    setNewNumber={setNewNumber}
-                    setNewName={setNewName}
-                />
-                })
-
-	return (
-    	<div className={darkMode ? "phonebook-dark" : "phonebook"}>
-            <Toaster />
-      		<h1>Phonebook</h1> <button onClick={() => setDarkMode(!darkMode)}>🌚🌝</button>
-
-      		<Search 
-          		value={filter}
-          		onChange={handleFilterChange}
-      		/>
-
-      		<AddContact 
-          		formSubmit={formSubmit}
-          		newName={newName}
-          		handleNameChange={handleNameChange}
-          		handleNumberChange={handleNumberChange}
-          		newNumber={newNumber}
-      		/>
-
-      		<h2 className="numbers">Numbers</h2>
-      			{displayAll}
-      	</div>
-  	)
+  return (
+    <div>
+      <Toaster />
+      <h1>Phonebook</h1>
+      <Filter
+        setFilter={setFilter}
+        filter={filter}
+      />
+      <h2>add new</h2>
+      <Form
+        name={name}
+        number={number}
+        handleFormChange={handleFormChange}
+        handleFormSubmit={handleFormSubmit}
+      />
+      <h2>Numbers</h2>
+      <Persons
+        filter={filter}
+        persons={persons}
+        handleDeleteNote={handleDeleteNote}
+      />
+    </div>
+  )
 }
 
 export default App
